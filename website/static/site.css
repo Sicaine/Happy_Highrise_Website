@@ -1,0 +1,424 @@
+/* Happy Highrise - happy-highrise.com
+ *
+ * The page is the tower. It opens on the roof, in the game's own sky; each
+ * section below is a floor with a slab on top and a lift-shaft number, in the
+ * colours of the rooms; then the street, and under it the rock, the way the
+ * game itself ends below grade. A lift car on the left follows you down.
+ *
+ * Colours are the game's: sky and earth from the renderer, the cream of the
+ * interface bar, the navy outline and cream face of the logo, the lamp yellow
+ * of a lift landing. Corners are 4px because the game's buttons are
+ * (styleguide ui.radius.px).
+ */
+
+@font-face {
+  font-family: "Silkscreen";
+  src: url("fonts/Silkscreen-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --sky: #97bdda;
+  --sky-deep: #7fa9cb;
+  --ui: #f2eee3;
+  --ui-edge: #d9d2c0;
+  --ink: #1c2433;
+  --ink-soft: #4b5466;
+  --cream: #f6ebd2;
+  --lamp: #efc879;
+  --lamp-hot: #f5d27a;
+  --shaft: #242831;
+  --slab: #8e9196;
+  --slab-dark: #5e6268;
+  --road: #36393e;
+  --earth: #45413c;
+  --earth-deep: #2e2a25;
+  --bedrock: #201d1a;
+  --night: #16213a;
+
+  /* room colours, one per floor */
+  --room-build: #ebe2cf;
+  --room-lifts: #e3deec;
+  --room-run: #dde6e8;
+  --room-life: #efdfdc;
+  --room-stars: #e4e9da;
+  --room-lobby: #f4e6c4;
+
+  --display: "Silkscreen", ui-monospace, monospace;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --r: 4px;
+  --gutter: 16px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--ui);
+  color: var(--ink);
+  font: 17px/1.6 var(--body);
+  overflow-x: hidden;
+}
+
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--lamp); outline-offset: 2px; }
+
+.skip {
+  position: absolute; left: var(--gutter); top: -60px; z-index: 50;
+  background: var(--ink); color: var(--cream); padding: 8px 12px; border-radius: var(--r);
+}
+.skip:focus { top: 12px; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+
+h1, h2, h3, .pixel {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1.15;
+}
+
+/* ---------- buttons: the game's bottom-bar buttons, with the logo's bevel ---------- */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 700 15px/1 var(--display);
+  letter-spacing: .04em;
+  text-decoration: none;
+  padding: 14px 18px 13px;
+  border-radius: var(--r);
+  border: 3px solid var(--ink);
+  box-shadow: 0 4px 0 var(--ink);
+  transition: transform .08s, box-shadow .08s;
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 5px 0 var(--ink); }
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+.btn-primary { background: var(--lamp); color: var(--ink); }
+.btn-primary:hover { background: var(--lamp-hot); }
+.btn-ghost { background: var(--cream); color: var(--ink); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+
+/* "Coming soon": a lift landing whose light is not on yet. Not a link. */
+.btn-soon {
+  background: var(--ink); color: var(--cream); cursor: default;
+  box-shadow: 0 4px 0 #0c111b;
+}
+.btn-soon:hover, .btn-soon:active { transform: none; box-shadow: 0 4px 0 #0c111b; }
+.btn-soon .dot {
+  width: 10px; height: 10px; background: var(--lamp); border-radius: 2px;
+  animation: blink 1.6s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .btn-soon .dot { animation: none; } }
+
+/* ---------- top bar ---------- */
+
+.topbar {
+  position: absolute; inset: 0 0 auto 0; z-index: 10;
+  display: flex; justify-content: flex-end;
+  padding: 14px var(--gutter);
+}
+.langs {
+  display: flex; border: 2px solid var(--ink); border-radius: var(--r); overflow: hidden;
+  background: var(--cream); box-shadow: 0 3px 0 var(--ink);
+}
+.langs a, .langs span {
+  font: 700 13px/1 var(--display); padding: 8px 10px; text-decoration: none;
+}
+.langs [aria-current] { background: var(--ink); color: var(--cream); }
+.langs a:hover { background: var(--lamp); }
+
+/* ---------- the roof: hero ---------- */
+
+.hero {
+  position: relative;
+  background: var(--sky);
+  min-height: clamp(700px, 100svh, 1000px);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-art {
+  position: absolute; z-index: -1;
+  bottom: 0;
+  /* Put the tower (x = 1017 of 1920 in the picture) at 70% of the width. */
+  left: calc(70% - 1017px);
+  width: 1920px; height: 620px;
+  image-rendering: pixelated;
+  max-width: none;
+}
+@media (min-width: 1921px) {
+  .hero-art { width: 100%; height: auto; left: 0; }
+}
+.hero-copy {
+  position: relative;
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: 96px var(--gutter) 0;
+}
+.hero-copy > * { max-width: 560px; }
+.hero-copy > .ctas { max-width: none; }
+.hero .logo { width: min(520px, 100%); height: auto; margin: 0 0 22px -6px; filter: drop-shadow(0 3px 0 rgba(28, 36, 51, .18)); }
+.hero h1 {
+  font-size: clamp(22px, 2.6vw, 30px);
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+.hero .lede { margin: 0 0 26px; font-size: 18px; color: var(--ink); }
+.ctas { display: flex; flex-wrap: wrap; gap: 14px 16px; align-items: center; }
+.platforms {
+  margin-top: 18px; font: 700 12px/1 var(--display); letter-spacing: .08em; color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .hero { min-height: 0; }
+  .hero-copy { padding-top: 72px; padding-bottom: 20px; }
+  .hero-copy > * { max-width: none; }
+  .hero-art-box { position: relative; height: 470px; overflow: hidden; margin-top: auto; }
+  .hero-art { left: calc(50% - 1017px); z-index: 0; }
+}
+
+/* ---------- the lift shaft: page navigation ---------- */
+
+.shaft {
+  position: fixed; z-index: 20;
+  left: 18px; top: 50%; transform: translateY(-50%);
+  display: none;
+}
+@media (min-width: 1300px) { .shaft { display: block; } }
+.shaft ol {
+  list-style: none; margin: 0; padding: 6px;
+  background: var(--shaft);
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, .25);
+  position: relative;
+}
+.shaft li { position: relative; }
+.shaft a {
+  position: relative; z-index: 1;
+  display: grid; place-items: center;
+  width: 34px; height: 30px;
+  font: 700 13px/1 var(--display);
+  color: #c9ab68;
+  text-decoration: none;
+}
+.shaft a[aria-current] { color: var(--ink); }
+.shaft .name {
+  position: absolute; left: calc(100% + 12px); top: 50%; transform: translateY(-50%);
+  white-space: nowrap;
+  font: 700 12px/1 var(--display);
+  background: var(--ink); color: var(--cream);
+  padding: 6px 8px; border-radius: var(--r);
+  opacity: 0; pointer-events: none; transition: opacity .15s;
+}
+.shaft a:hover .name, .shaft a:focus-visible .name { opacity: 1; }
+.shaft .car {
+  position: absolute; left: 6px; top: 0; z-index: 0;
+  width: 34px; height: 30px;
+  background: var(--lamp);
+  border-radius: 2px;
+  /* the two doors */
+  background-image: linear-gradient(90deg, transparent 49%, rgba(28, 36, 51, .35) 49% 51%, transparent 51%);
+  transition: transform .45s cubic-bezier(.45, .05, .3, 1);
+}
+@media (prefers-reduced-motion: reduce) { .shaft .car { transition: none; } }
+
+/* ---------- floors ---------- */
+
+.floor {
+  position: relative;
+  /* the slab: concrete with its shadow line, as every floor in the game */
+  border-top: 10px solid var(--slab);
+  box-shadow: inset 0 3px 0 var(--slab-dark);
+  padding: 72px 0 80px;
+  scroll-margin-top: 0;
+}
+.floor:nth-of-type(even) .feature { direction: rtl; }
+.floor:nth-of-type(even) .feature > * { direction: ltr; }
+
+.floor-head { margin-bottom: 26px; }
+.tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 700 12px/1 var(--display); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+.tag .num {
+  display: grid; place-items: center;
+  min-width: 34px; height: 30px; padding: 0 6px;
+  background: var(--shaft); color: var(--lamp);
+  border-radius: 2px; font-size: 14px;
+}
+.floor h2 { font-size: clamp(26px, 3.6vw, 40px); margin: 0; }
+.floor p { margin: 0 0 16px; max-width: 62ch; }
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .feature { grid-template-columns: 1fr; gap: 28px; }
+  .floor { padding: 52px 0 60px; }
+}
+
+/* a screenshot is a window into the tower: navy frame, the logo's drop */
+.shot {
+  display: block; position: relative;
+  border: 3px solid var(--ink); border-radius: var(--r);
+  box-shadow: 0 6px 0 var(--ink);
+  overflow: hidden; background: var(--ink);
+  cursor: zoom-in;
+}
+.shot img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .25s; }
+.shot:hover img { transform: scale(1.015); }
+@media (prefers-reduced-motion: reduce) { .shot img { transition: none; } .shot:hover img { transform: none; } }
+.shots-more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
+.shots-more .shot { box-shadow: 0 4px 0 var(--ink); border-width: 2px; }
+
+/* ---------- trailer ---------- */
+
+.floor-trailer { --room: var(--night); color: var(--cream); border-top-color: var(--slab-dark); }
+.floor-trailer .tag { color: #a9b3c7; }
+.floor-trailer .floor-head { text-align: center; }
+.floor-trailer .floor-head p { margin: 12px auto 0; color: #cfd6e3; }
+.video {
+  max-width: 960px; margin: 0 auto;
+  border: 3px solid #0b101c; border-radius: var(--r);
+  box-shadow: 0 0 0 3px var(--slab-dark), 0 18px 60px rgba(0, 0, 0, .45);
+  overflow: hidden; background: #000;
+}
+.video video { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+
+/* ---------- lobby: press and facts ---------- */
+
+.press { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; align-items: start; }
+@media (max-width: 900px) { .press { grid-template-columns: 1fr; } }
+.card {
+  background: var(--ui); border: 3px solid var(--ink); border-radius: var(--r);
+  box-shadow: 0 6px 0 var(--ink); padding: 22px 24px;
+}
+.card h3 { font-size: 18px; margin: 0 0 14px; }
+.facts { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 0; }
+.facts dt, .facts dd { padding: 10px 0; border-top: 2px dashed var(--ui-edge); margin: 0; }
+.facts dt:first-of-type, .facts dd:first-of-type { border-top: 0; }
+.facts dt { font: 700 12px/1.9 var(--display); letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); padding-right: 20px; }
+@media (max-width: 520px) {
+  .facts { grid-template-columns: 1fr; }
+  .facts dd { border-top: 0; padding-top: 0; }
+}
+.card .btn { margin-top: 8px; }
+.card .small { font-size: 14px; color: var(--ink-soft); margin: 14px 0 0; }
+
+/* ---------- the street, then underground ---------- */
+
+.street {
+  height: 54px;
+  background:
+    linear-gradient(var(--slab) 0 6px, transparent 6px),
+    repeating-linear-gradient(90deg, transparent 0 34px, #c9c3b4 34px 70px) 0 28px / 100% 3px no-repeat,
+    var(--road);
+  border-bottom: 8px solid #2b2d31;
+}
+
+.underground {
+  color: var(--cream);
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, .04) 0 2px, transparent 3px) 0 0 / 46px 38px,
+    radial-gradient(circle at 70% 60%, rgba(0, 0, 0, .18) 0 2px, transparent 3px) 0 0 / 58px 44px,
+    linear-gradient(var(--earth), var(--earth-deep));
+  padding: 84px 0 96px;
+  position: relative;
+}
+.underground .tag { color: #b9ae9c; }
+.underground .tag .num { background: #15130f; }
+.underground h2 { font-size: clamp(28px, 4vw, 46px); margin: 0 0 18px; }
+.underground p { max-width: 60ch; margin: 0 0 14px; color: #e8dcc2; }
+.underground .tease {
+  font: 700 15px/1.6 var(--display); color: var(--lamp);
+  margin-top: 26px;
+  text-shadow: 0 0 18px rgba(239, 200, 121, .35);
+}
+.strata { height: 18px; background: repeating-linear-gradient(90deg, #3a3631 0 22px, #332f2a 22px 40px, #3d3833 40px 52px); }
+
+footer.bedrock {
+  background: var(--bedrock); color: #a79f90;
+  padding: 36px 0 44px; font-size: 14px;
+}
+footer .row { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+footer a { color: #e8dcc2; }
+footer .langs { box-shadow: none; border-color: #4a443c; background: transparent; }
+footer .langs a, footer .langs span { color: #e8dcc2; }
+footer .langs [aria-current] { background: #4a443c; }
+footer .langs a:hover { background: var(--lamp); color: var(--ink); }
+
+/* ---------- plain pages: privacy, imprint, 404 ---------- */
+
+.page-top { background: var(--sky); border-bottom: 10px solid var(--slab); box-shadow: inset 0 -3px 0 var(--slab-dark); padding: 22px 0; }
+.page-top .row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.page-top .logo { width: 200px; height: auto; }
+.prose { padding: 56px var(--gutter) 80px; max-width: 760px; margin: 0 auto; }
+.prose h1 { font-size: clamp(26px, 4vw, 38px); margin: 0 0 24px; }
+.prose h2 { font-size: 18px; margin: 36px 0 10px; }
+.prose p, .prose address { margin: 0 0 14px; font-style: normal; }
+.notfound { text-align: center; padding: 96px var(--gutter) 120px; }
+.notfound h1 { font-size: clamp(24px, 4vw, 38px); margin: 0 0 14px; }
+.notfound p { margin: 0 0 28px; }
+
+/* ---------- lightbox ---------- */
+
+dialog.lightbox {
+  padding: 0; border: 0; background: transparent; max-width: none; max-height: none;
+  width: 100vw; height: 100vh; margin: 0;
+}
+dialog.lightbox::backdrop { background: rgba(12, 17, 27, .92); }
+.lightbox figure {
+  margin: 0; height: 100%; display: grid; place-items: center; padding: 56px 64px 24px;
+}
+.lightbox img {
+  max-width: 100%; max-height: calc(100vh - 140px); width: auto; height: auto;
+  border: 3px solid var(--ink); border-radius: var(--r); box-shadow: 0 0 0 3px var(--slab-dark);
+}
+.lightbox figcaption { color: var(--cream); margin-top: 14px; text-align: center; font-size: 15px; }
+.lightbox button {
+  position: absolute; background: var(--cream); color: var(--ink);
+  border: 2px solid var(--ink); border-radius: var(--r); box-shadow: 0 3px 0 var(--ink);
+  font: 700 18px/1 var(--display); width: 44px; height: 44px; cursor: pointer;
+}
+.lightbox button:hover { background: var(--lamp); }
+.lightbox .close { top: 14px; right: 14px; }
+.lightbox .prev { left: 12px; top: 50%; }
+.lightbox .next { right: 12px; top: 50%; }
+@media (max-width: 640px) {
+  .lightbox figure { padding: 64px 8px 16px; }
+  .lightbox .prev, .lightbox .next { top: auto; bottom: 14px; }
+}
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* each floor is a room, in its own colour */
+.floor { background: var(--room, var(--ui)); }
+
+/* ---------- test version banner (site.json "preview") ---------- */
+
+.preview {
+  position: relative; z-index: 30;
+  display: flex; gap: 10px 12px; align-items: baseline; justify-content: center; flex-wrap: wrap;
+  padding: 9px var(--gutter);
+  background: repeating-linear-gradient(-45deg, var(--lamp) 0 14px, #e6b85f 14px 28px);
+  border-bottom: 3px solid var(--ink);
+  color: var(--ink); font-size: 14px; line-height: 1.45; text-align: center;
+}
+.preview .badge {
+  font: 700 12px/1 var(--display); letter-spacing: .06em; text-transform: uppercase;
+  background: var(--ink); color: var(--lamp); padding: 5px 8px; border-radius: 2px; flex: none;
+}
+.preview a { font-weight: 600; white-space: nowrap; }

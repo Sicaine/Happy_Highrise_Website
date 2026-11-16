@@ -1,0 +1,193 @@
+{
+  "lang_name": "Deutsch",
+  "lang_short": "DE",
+  "locale": "de_DE",
+  "path": "de/",
+  "meta": {
+    "title": "Happy Highrise - bau einen Wolkenkratzer, halt alle in Bewegung",
+    "description": "Ein Hochhaus-Aufbauspiel in Pixel-Art. Gieß die Etagen, vermiete Büros, Läden, Hotels und Wohnungen und bring Tausende simulierte Menschen ans Ziel - vor allem mit den richtigen Aufzügen. Bald auf Steam für Windows, macOS und Linux."
+  },
+  "ui": {
+    "skip": "Zum Inhalt springen",
+    "language": "Sprache",
+    "floors": "Etagen",
+    "close": "Schließen",
+    "previous": "Vorheriges Bild",
+    "next": "Nächstes Bild",
+    "enlarge": "Vergrößern",
+    "floor": "Etage"
+  },
+  "preview": {
+    "badge": "Testversion",
+    "text": "Diese Seite ist eine private Vorschau von Happy Highrise, solange sie entsteht. Hier wird noch nichts verkauft, und eine Steam-Seite gibt es noch nicht.",
+    "link": "Impressum"
+  },
+  "hero": {
+    "tagline": "Bau einen Wolkenkratzer.<br>Halt alle in Bewegung.",
+    "lede": "Ein Hochhaus-Aufbauspiel in Pixel-Art, im Geist der Klassiker von 1994. Gieß die Etagen, vermiete die Räume und bring Tausende simulierte Menschen dorthin, wo sie hinwollen - vor allem mit den richtigen Aufzügen.",
+    "cta_soon": "Bald auf Steam",
+    "cta_wishlist": "Auf Steam wünschen",
+    "cta_trailer": "Trailer ansehen",
+    "platforms": "Windows · macOS · Linux"
+  },
+  "trailer": {
+    "label": "Trailer",
+    "title": "Ein Tag im Turm",
+    "text": "Bau ihn, füll ihn, bring sie nach oben, verdien dir Sterne. Dann geht etwas schief.",
+    "fallback": "Dein Browser kann dieses Video nicht abspielen."
+  },
+  "floors": [
+    {
+      "id": "build",
+      "label": "Bauen",
+      "title": "Bau ihn hoch",
+      "text": "Fang mit einer Lobby auf einem leeren Grundstück an. Bautrupps gießen die Etagen Platte für Platte, während du Büros, Läden, Restaurants, Hotelzimmer und Wohnungen einrichtest. Kauf Land dazu, wenn der Turm wächst, und setz dem Dach eine Krone auf, wenn du oben angekommen bist.",
+      "shots": [
+        "02_showcase"
+      ]
+    },
+    {
+      "id": "lifts",
+      "label": "Aufzüge",
+      "title": "Alle wollen nach oben",
+      "text": "Jeder Mensch in deinem Turm wird simuliert. Sie kommen nach ihrem eigenen Zeitplan, stellen sich an, fahren, werden ungeduldig und gehen verärgert. Zieh Standard-, Express-, Service- und Lastenaufzüge auf Länge, stell ihre Steuerung ein, teil sie in Expresszonen und bau Sky-Lobbys. Die Rushhour ist die Prüfung.",
+      "shots": [
+        "01_rush_hour",
+        "10_traffic_overlay"
+      ]
+    },
+    {
+      "id": "run",
+      "label": "Versorgung",
+      "title": "Lass das Licht an",
+      "text": "Wasserdruck aus Tanks und Druckerhöhungspumpen. Strom aus dem Netz, von der Sonne, vom Wind und aus den Batterien im Keller. Lüftung, Müll, Sprinkler. Dann fällt in der ganzen Stadt der Strom aus, in einer Küche brennt es, und dein Gebäude muss damit fertigwerden.",
+      "shots": [
+        "06_blackout",
+        "07_firefighters"
+      ]
+    },
+    {
+      "id": "life",
+      "label": "Ereignisse",
+      "title": "Jede Woche ein Fest",
+      "text": "Filme im Kino, Hochzeiten im Ballsaal, eine Skihalle im Haus, Schnee auf dem Dach und eine Jahresendwoche in der geschmückten Lobby. Ein Kalender voller Konferenzen, Reisegruppen und Premieren hält den Turm auf Trab, und die Musik wächst mit deinen Sternen.",
+      "shots": [
+        "04_cinema",
+        "05_ski_hall",
+        "09_year_end",
+        "08_snowy_night"
+      ]
+    },
+    {
+      "id": "stars",
+      "label": "Sterne",
+      "title": "Hundert Etagen",
+      "text": "Verdien dir Sterne mit Bewohnern und Zufriedenheit, bestätigt durch eine Inspektion, die eine echte Fahrt durch deinen Turm stoppt. Investier Erkenntnisse in einen Forschungsbaum, übernimm in Szenarien den schlecht gebauten Turm von jemand anderem und bau weiter nach oben.",
+      "shots": [
+        "03_hundred_floors"
+      ]
+    }
+  ],
+  "shots": {
+    "01_rush_hour": "Rushhour um 08:30: eine Schlange in der Lobby und volle Büroetagen",
+    "02_showcase": "Ein fertiger Turm mit Büros, Wohnungen, einem Restaurant und einem Windrad auf dem Dach",
+    "03_hundred_floors": "Im Inneren eines Turms mit hundert Etagen",
+    "04_cinema": "Ein Film im Kino",
+    "05_ski_hall": "Die Skihalle",
+    "06_blackout": "Ein Stromausfall in der Stadt bei Nacht, getragen vom eigenen Strom des Turms",
+    "07_firefighters": "Die Feuerwehr am Schlauch",
+    "08_snowy_night": "Eine verschneite Nacht",
+    "09_year_end": "Die Jahresendwoche in einer geschmückten, zweistöckigen Lobby",
+    "10_traffic_overlay": "Die Verkehrsansicht zeigt, wo Menschen warten"
+  },
+  "lobby": {
+    "label": "Lobby",
+    "title": "Presse und Fakten",
+    "text": "Alles, was du brauchst, um über das Spiel zu schreiben, an einem Ort.",
+    "facts_title": "Faktenblatt",
+    "facts": [
+      [
+        "Titel",
+        "Happy Highrise"
+      ],
+      [
+        "Genre",
+        "Hochhaus-Aufbau- und Managementsimulation"
+      ],
+      [
+        "Plattformen",
+        "Windows (x64), macOS (Apple Silicon), Linux (x86_64)"
+      ],
+      [
+        "Erscheint",
+        "{{release}}"
+      ],
+      [
+        "Shop",
+        "Steam"
+      ],
+      [
+        "Sprachen",
+        "Englisch"
+      ],
+      [
+        "Technik",
+        "Rust und Bevy, mit einer vollständig deterministischen Simulation"
+      ]
+    ],
+    "release_soon": "Demnächst",
+    "kit_title": "Pressekit",
+    "kit_text": "Logo, Store-Grafiken, Icons, zehn Screenshots in 1920×1080 und dieses Faktenblatt.",
+    "kit_button": "Pressekit herunterladen",
+    "contact": "Presse und Geschäftliches"
+  },
+  "dig": {
+    "label": "Untergrund",
+    "title": "Dann grab nach unten",
+    "text": "Lastwagen fahren den Aushub ab, Etage für Etage, bis hinunter auf B20. Parkhäuser, ein Nachtclub, Bunker, ein Museum für die Ruinen, die du findest.",
+    "tease": "Und noch weiter unten etwas, wovon dir niemand erzählt hat."
+  },
+  "footer": {
+    "privacy": "Datenschutz",
+    "imprint": "Impressum",
+    "top": "Zurück aufs Dach"
+  },
+  "privacy": {
+    "slug": "datenschutz",
+    "title": "Datenschutz",
+    "body": [
+      "<h2>Kurz gesagt</h2>",
+      "<p>Diese Website setzt keine Cookies, nutzt keine Analyse- oder Tracking-Dienste und lädt nichts von Dritten: Schriften, Bilder, Skripte und das Video kommen alle von dieser Website selbst. Es gibt keine Formulare, Konten oder Kommentare.</p>",
+      "<h2>Hosting</h2>",
+      "<p>Die Website wird bei GitHub Pages gehostet, einem Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Wenn du eine Seite aufrufst, sendet dein Browser die üblichen Anfragedaten an die Server von GitHub, darunter deine IP-Adresse, die aufgerufene Seite, die Uhrzeit und die Kennung deines Browsers. GitHub verarbeitet diese Daten, um die Website auszuliefern und abzusichern, und kann sie in Server-Logs speichern. Rechtsgrundlage ist unser berechtigtes Interesse an einer funktionierenden, sicheren Website (Art. 6 Abs. 1 lit. f DSGVO). Die Datenschutzerklärung von GitHub: <a href=\"https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement\" rel=\"noopener\">GitHub General Privacy Statement</a>.</p>",
+      "<h2>Links zu anderen Websites</h2>",
+      "<p>Links zu Steam und anderen Websites führen auf deren Seiten, für die deren eigene Datenschutzerklärungen gelten. Bevor du einem Link folgst, wird nichts an sie übertragen.</p>",
+      "<h2>Deine Rechte</h2>",
+      "<p>Nach der DSGVO hast du das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner personenbezogenen Daten, auf Widerspruch gegen die Verarbeitung und auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde. Da diese Website selbst keine personenbezogenen Daten speichert, richtest du Anfragen zu den Hosting-Logs am besten an GitHub. {{privacy_contact}}</p>"
+    ],
+    "contact_line": "Für alles andere schreib an <a href=\"mailto:{{email}}\">{{email}}</a>.",
+    "contact_imprint": "Wer für diese Website verantwortlich ist, steht im <a href=\"{{imprint_href}}\">Impressum</a>."
+  },
+  "imprint": {
+    "slug": "impressum",
+    "title": "Impressum",
+    "intro": "Angaben gemäß § 5 DDG.",
+    "contact": "Kontakt",
+    "responsible": "Verantwortlich für den Inhalt"
+  },
+  "imprint_preview": {
+    "title": "Impressum",
+    "body": [
+      "<p><strong>Diese Website ist eine Testversion.</strong></p>",
+      "<p>happy-highrise.com ist derzeit eine private, nicht-kommerzielle Vorschau, mit der Aufbau und Darstellung der Seite getestet werden. Sie bietet keine Waren oder Dienstleistungen an, verkauft nichts, enthält keine Werbung und verlinkt auf keine Verkaufsseite. Eine Steam-Seite für das Spiel gibt es noch nicht.</p>",
+      "<p>Die Seite ist nicht für die Öffentlichkeit bestimmt und für Suchmaschinen gesperrt.</p>",
+      "<h2>Vor dem Start</h2>",
+      "<p>Sobald die Seite öffentlich beworben wird, das Spiel angekündigt oder zum Kauf angeboten wird, steht an dieser Stelle ein vollständiges Impressum nach § 5 DDG mit Name, Anschrift und Kontaktmöglichkeit.</p>"
+    ]
+  },
+  "notfound": {
+    "title": "Diese Etage ist noch nicht gebaut",
+    "text": "Die Seite, die du suchst, gibt es nicht.",
+    "home": "Mit dem Aufzug zur Lobby"
+  }
+}

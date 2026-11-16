@@ -1,0 +1,4 @@
+# Written by the private repository's scripts/sync-website.py.
+__pycache__/
+.tmp/
+_site/

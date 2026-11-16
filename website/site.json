@@ -1,0 +1,22 @@
+{
+  "_readme": "Facts about the site that are the same in every language. Edit, push, and the website workflow redeploys. A null hides whatever depends on it.",
+
+  "_preview": "true while the site is only a test: every page carries a 'Test version' banner, search engines are told to stay away, and until 'imprint' is filled in the imprint is a German page saying the site is a non-commercial test. Set false (and fill in 'imprint') when the site goes public.",
+  "preview": true,
+
+  "domain": "happy-highrise.com",
+  "default_lang": "en",
+  "langs": ["en", "de"],
+
+  "_steam_app_id": "The number in the Steam store URL. While null the page says 'Coming soon on Steam'; once set, every Steam button becomes 'Wishlist on Steam' and links to the store page.",
+  "steam_app_id": null,
+
+  "_release": "Shown in the fact sheet. null reads 'Coming soon' in each language; otherwise free text such as '2027' or 'Q1 2027'.",
+  "release": null,
+
+  "_contact_email": "Press and business contact, shown in the press section and the footer. null hides it.",
+  "contact_email": null,
+
+  "_imprint": "Required for a German site (DDG §5). null builds no imprint page and the build warns. Fill it in like: {\"name\": \"…\", \"address\": [\"Street 1\", \"12345 City\", \"Germany\"], \"email\": \"…\"}",
+  "imprint": null
+}
